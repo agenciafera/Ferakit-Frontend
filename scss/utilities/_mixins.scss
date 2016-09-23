@@ -1,0 +1,142 @@
+/*==================================
+=            Responsive            =
+==================================*/
+
+@mixin viewport-unit($property, $pixel, $context, $axis: vw) {
+  #{$property}: #{$pixel}px;
+  #{$property}: #{_($pixel, $context)}#{$axis};
+}
+
+/*=====  End of Responsive  ======*/
+
+/*===========================
+=            REM            =
+===========================*/
+
+@mixin rem($properties, $values...) {
+  @if type-of($properties) == "map" {
+    @each $property, $values in $properties {
+      @include rem($property, $values...);
+    }
+  } @else {
+    @each $property in $properties {
+      @if $rem-fallback or $rem-px-only {
+        #{$property}: rem-convert(px, $values...);
+      }
+      @if not $rem-px-only {
+        #{$property}: rem-convert(rem, $values...);
+      }
+    }
+  }
+}
+
+/*=====  End of REM  ======*/
+
+@mixin svg($file, $width, $height) {
+  background: transparent image-url($file) center center no-repeat;
+  @include rem(background-size, $width $height);
+  @include rem(width, $width);
+  @include rem(height, $height);
+}
+
+@mixin img($file, $proportion: 1) {
+  background: transparent image-url($file) center center no-repeat;
+  background-size: rem(image-width($file) * $proportion) rem(image-height($file) * $proportion);
+  @include rem(width, image-width($file) * $proportion);
+  @include rem(height, image-height($file) * $proportion);
+  padding: 1px;
+  box-sizing: content-box;
+}
+
+@mixin align($direction: both) {
+  position: absolute;
+  transform-style: preserve-3d;
+
+  @if index("horizontal" "h", $direction) {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if index("vertical" "v", $direction) {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if index("none", $direction) {
+    top: auto;
+    left: auto;
+    transform: translate(0, 0);
+  } @else {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin responsive-property($property, $s: null, $t: null, $d: null, $ld: null) {
+
+  @if $s {
+    @include rem($property, $s*1px);
+  }
+
+  @if $t {
+    @media #{$tablet} {
+      @include rem($property, $t*1px);
+    }
+  }
+
+  @if $d {
+    @media #{$desktop} {
+      @include rem($property, $d*1px);
+    }
+  }
+
+  @if $ld {
+    @media #{$widescreen} {
+      @include rem($property, $ld*1px);
+    }
+  }
+
+}
+
+@mixin improve-readability($afterLayer) {
+  position: relative;
+
+  #{$afterLayer} {
+    z-index: 1;
+    position: relative;
+  }
+
+  &::before {
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.10) 80%,rgba(0,0,0,0.0) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+  }
+
+}
+
+@mixin cover($width, $height) {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  @include rem(max-width, $width);
+  @include rem(max-height, $height);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: ($height*100%)/$width;
+    // padding-bottom: 50%;
+  }
+
+}

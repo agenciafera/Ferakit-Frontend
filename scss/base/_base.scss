@@ -1,0 +1,26 @@
+* {
+	box-sizing: border-box;
+	text-rendering: optimizeLegibility;
+
+	&:focus, &:hover {
+		outline: 0;
+	}
+
+}
+
+html {
+	@include viewport-unit(font-size, 14, 414, "vw");
+
+	@media #{$tablet} {
+		@include viewport-unit(font-size, 14, 1024, "vw");
+	}
+
+	@media #{$desktop} {
+		font-size: 14px;
+	}
+
+	@media #{$widescreen} {
+	  font-size: 16px;
+	}
+
+}
