@@ -3,24 +3,24 @@ $displays: block inline-block none;
 @each $display in $displays {
 
   .d-#{$display} {
-    display: $display;
+    display: $display!important;
   }
 
   @media #{$only-smartphone} {
     .d-#{$display}\@smartphone {
-      display: $display;
+      display: $display!important;
     }
   }
 
   @media #{$only-tablet} {
     .d-#{$display}\@tablet {
-      display: $display;
+      display: $display!important;
     }
   }
 
   @media #{$desktop} {
     .d-#{$display}\@desktop {
-      display: $display;
+      display: $display!important;
     }
   }
 
