@@ -9,18 +9,11 @@
 }
 
 html {
-	@include viewport-unit(font-size, 14, 414, "vw");
-
-	@media #{$tablet} {
-		@include viewport-unit(font-size, 14, 1024, "vw");
-	}
-
-	@media #{$desktop} {
-		font-size: 14px;
-	}
-
-	@media #{$widescreen} {
-	  font-size: 16px;
-	}
-
+	@include poly-fluid-sizing('font-size', (
+		414px: 13px,
+		768px: 14px,
+		1024px: 14px,
+		1440px: 14px,
+		1920px: 16px
+	));
 }
