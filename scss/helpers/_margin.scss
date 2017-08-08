@@ -2,7 +2,11 @@ $directions: left right top bottom;
 
 @each $direction in $directions {
 
-  @for $i from 1 through 20 {
+  .m-#{$direction}-0 {
+    @include rem("margin-#{$direction}", 0px!important);
+  }
+
+  @for $i from 0 through 20 {
 
     .m-#{$direction}-#{$i} {
       @include rem("margin-#{$direction}", ($i*10px)!important);

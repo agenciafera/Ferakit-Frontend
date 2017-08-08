@@ -16,9 +16,10 @@
 /*===============================
 =            Helpers            =
 ===============================*/
-@import "helpers/displays";
-@import "helpers/img";
-@import "helpers/spaces";
+@import "helpers/displays",
+        "helpers/img",
+        "helpers/text",
+        "helpers/margin";
 
 /*============================
 =            Base            =
