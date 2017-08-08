@@ -13,6 +13,10 @@ $child: "division";
   align-items: center;
 }
 
+.#{$parent}.-vertical-bottomed  {
+  align-items: flex-end;
+}
+
 .#{$parent}.-horizontal-centered {
   justify-content: center;
 }
