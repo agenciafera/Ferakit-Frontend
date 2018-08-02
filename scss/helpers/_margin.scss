@@ -3,13 +3,29 @@ $directions: left right top bottom;
 @each $direction in $directions {
 
   .m-#{$direction}-0 {
-    @include rem("margin-#{$direction}", 0px!important);
+    @include rem("margin-#{$direction}", 0px);
+  }
+
+  .p-#{$direction}-0 {
+    @include rem("padding-#{$direction}", 0px);
   }
 
   @for $i from 0 through 20 {
 
     .m-#{$direction}-#{$i} {
-      @include rem("margin-#{$direction}", ($i*10px)!important);
+      @include rem("margin-#{$direction}", ($i*10px));
+    }
+
+    .m-#{$i}{
+      @include rem("margin", ($i*10px));
+    }
+
+    .p-#{$direction}-#{$i} {
+      @include rem("padding-#{$direction}", ($i*10px));
+    }
+
+    .p-#{$i}{
+      @include rem("margin", ($i*10px));
     }
 
   }
