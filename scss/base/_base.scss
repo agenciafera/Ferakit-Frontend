@@ -51,13 +51,3 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-html {
-	@include poly-fluid-sizing('font-size', (
-		414px: 13px,
-		768px: 14px,
-		1024px: 14px,
-		1440px: 14px,
-		1920px: 16px
-	));
-}

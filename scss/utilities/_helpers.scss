@@ -8,3 +8,111 @@
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+.ir {
+  display: block;
+  overflow: hidden;
+  text-indent: -9999px;
+}
+
+.-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.-hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+.-o-hidden{
+  overflow: hidden;
+}
+
+.-visible { display: block !important; }
+
+.-invisible { visibility: hidden; }
+
+.-block { display: block; }
+
+.-horizontal-only {
+  height: auto;
+  @include rem(max-height, 200px);
+}
+
+.-align-left, .align-left { //colocando sem hifem para o wordpress WYSIWYG
+  float: left;
+  @include rem(margin-right, 30px);
+  @include rem(margin-bottom, 30px);
+}
+
+.-align-right, .align-right {//colocando sem hifem para o wordpress WYSIWYG
+  float: right;
+  @include rem(margin-left, 30px);
+  @include rem(margin-bottom, 30px);
+}
+
+.-t-left{
+  text-align: left;
+}
+
+.-t-right{
+  text-align: right;
+}
+
+.-t-center{
+  text-align: center;
+}
+
+.-p-events-n{
+  pointer-events: none;
+}
+
+.accordion-toggle {cursor: pointer;}
+.accordion-content {display: none;}
+.accordion-content.default {display: block;}
+
+.-only-mobile{
+    display: inline-block !important;
+    @media #{$desktop} {
+      display: none !important;
+    }
+}
+
+.-only-desktop{
+    display: none !important;
+    @media #{$desktop} {
+      display: inline-block !important;
+    }
+}
+
+.-dib{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.-t-upper{
+  text-transform: uppercase !important;
+}
+
+.-fixed{
+  position: fixed;
+}
+
+.-relative{
+  position: relative;
+}
+
+.-center {
+  text-align: center!important;
+}
+
+.-hide-mobile {
+  @media #{$only-smartphone} {
+    display: none !important;
+  }
+}
+
+.-m-wid100{
+  max-width: 100%;
+}
